@@ -12,13 +12,13 @@ exports.register = async (req, res) => {
 
         const myCloud = await cloudinary.v2.uploader.upload(avatar, {
             folder: 'avatar',
-            
+
             crop: "scale",
         })
 
-        const myCloud2 = await cloudinary.v2.uploader.upload(resume, {
-            folder: 'resume',
-           
+        const myCloud2 = await cloudinary.v2.uploader.upload(req.files?.resume.tempFilePath || resume, {
+            folder: 'document',
+
             crop: "fit",
         })
 
@@ -35,7 +35,19 @@ exports.register = async (req, res) => {
             resume: {
                 public_id: myCloud2.public_id,
                 url: myCloud2.secure_url
-            }
+            },
+            documents: [
+                {
+                    fileName: req.files?.resume?.name || 'resume',
+                    fileType: myCloud2.format || 'application/octet-stream',
+                    category: 'resume',
+                    public_id: myCloud2.public_id,
+                    url: myCloud2.secure_url,
+                    // uploadedBy: null,
+                    uploadedAt: new Date()
+                }
+            ]
+
         })
 
         const token = createToken(user._id, user.email)
@@ -197,23 +209,23 @@ exports.updateProfile = async (req, res) => {
 
         const user = await User.findById(req.user._id);
 
-        const avatarId = user.avatar.public_id ;
-        const resumeId = user.resume.public_id ;
+        const avatarId = user.avatar.public_id;
+        const resumeId = user.resume.public_id;
 
-        await cloudinary.v2.uploader.destroy(avatarId) ;
-        await cloudinary.v2.uploader.destroy(resumeId) ;
+        await cloudinary.v2.uploader.destroy(avatarId);
+        await cloudinary.v2.uploader.destroy(resumeId);
 
-        
+
         const myCloud1 = await cloudinary.v2.uploader.upload(newAvatar, {
-            folder: 'avatar',            
+            folder: 'avatar',
             crop: "scale",
         })
 
         const myCloud2 = await cloudinary.v2.uploader.upload(newResume, {
-            folder: 'resume',           
+            folder: 'resume',
             crop: "fit",
         })
-      
+
 
         user.name = newName
         user.email = newEmail
@@ -244,30 +256,30 @@ exports.updateProfile = async (req, res) => {
 }
 
 
-exports.deleteAccount = async (req,res) => {
-    try{
+exports.deleteAccount = async (req, res) => {
+    try {
 
-        const user = await User.findById(req.user._id) 
+        const user = await User.findById(req.user._id)
 
-        const isMatch =  await bcrypt.compare(req.body.password, user.password);
-        
-        if(isMatch){
-            await User.findByIdAndRemove(req.user._id) ;
-        }else{
+        const isMatch = await bcrypt.compare(req.body.password, user.password);
+
+        if (isMatch) {
+            await User.findByIdAndRemove(req.user._id);
+        } else {
             return res.status(200).json({
                 success: false,
                 message: "Password does not match !"
 
             })
         }
-        
+
 
         res.status(200).json({
             success: true,
             message: "Account Deleted"
         })
 
-    }catch(err){
+    } catch (err) {
         res.status(500).json({
             success: false,
             message: err.message

@@ -39,14 +39,14 @@ export const Contact = () => {
 
             <Card
               title="Address"
-              content="JobLane, Wall Street, New York, 123, United States"
+              content="JobWays, Wall Street, New York, 123, United States"
             />
             <Card
               title="Email"
               content={[
-                "General Inquiries: info@joblane.com",
-                "Support: support@joblane.com",
-                "Job Applications: jobs@joblane.com",
+                "General Inquiries: info@jobways.com",
+                "Support: support@jobways.com",
+                "Job Applications: jobs@jobways.com",
               ]}
             />
             <Card

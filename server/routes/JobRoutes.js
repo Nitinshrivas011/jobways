@@ -1,11 +1,11 @@
 const express = require('express')
-const { isAuthenticated, authorizationRoles } = require('../middlewares/auth')
+const { isAuthenticated, authorizeRoles } = require('../middlewares/auth')
 const {createJob, allJobs, oneJob, saveJob, getSavedJobs} = require('../controllers/JobControllers')
 const {jobValidator,validateHandler,JobIdValidator } = require('../middlewares/validators');
 const router = express.Router()
 
 
-router.route("/create/job").post(isAuthenticated, authorizationRoles("admin") ,jobValidator(),validateHandler, createJob)
+router.route("/create/job").post(isAuthenticated, authorizeRoles("admin", "hr") ,jobValidator(),validateHandler, createJob)
 
 router.route("/jobs").get(allJobs) ;
 

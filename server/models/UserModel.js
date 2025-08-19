@@ -1,6 +1,16 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
 
+const DocumentSchema = new mongoose.Schema({
+    fileName: { type: String, required: true },
+    fileType: { type: String, required: true },
+    category: { type: String, required: true },  // 'resume', 'contract', 'offer', etc.
+    public_id: { type: String, required: true },
+    url: { type: String, required: true },
+    uploadedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: false },
+    uploadedAt: { type: Date, default: Date.now }
+});
+
 const UserSchema = new mongoose.Schema({
 
 
@@ -24,18 +34,18 @@ const UserSchema = new mongoose.Schema({
     avatar: {
         public_id: {
             type: String,
-            required: true
+            required: false
         },
         url: {
             type: String,
-            required: true
+            required: false
         },
     },
 
     role: {
         type: String,
-        enum: ["applicant", "admin"],
-        default: "applicant"
+        enum: ["candidate", "employee", "admin", "hr"],
+        default: "candidate"
     },
 
     skills: [
@@ -55,22 +65,36 @@ const UserSchema = new mongoose.Schema({
         },
 
     },
+
+    documents: [DocumentSchema],
+
     savedJobs: [
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Job'
         }
     ],
+
     appliedJobs: [
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Application'
         }
     ],
+
+
     createdAt: {
         type: Date,
         default: Date.now
-    }
+    },
+
+    emailVerified: {
+        type: Boolean,
+        default: false,
+    },
+    
+    verificationToken: String,
+    verificationTokenExpires: Date,
 
 })
 

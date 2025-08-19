@@ -6,6 +6,7 @@ const databaseConnection = () => {
         useUnifiedTopology: true
     }).then((data)=>{
         console.log(`database connected successfully at server ${data.connection.host}`)
+        console.log('DB URI:', process.env.DB);
     })
 }
 

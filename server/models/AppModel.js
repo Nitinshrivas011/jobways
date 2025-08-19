@@ -11,7 +11,7 @@ const ApplicationSchema =  new mongoose.Schema({
         ref: 'User',
         required: true
     },
-    applicantResume: {
+    candidateResume: {
         public_id: {
             type: String,
             required: true

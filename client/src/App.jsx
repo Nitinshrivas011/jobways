@@ -7,6 +7,7 @@ import { Jobs } from './pages/Jobs'
 import { Contact } from './pages/Contact'
 import { About } from './pages/About'
 import { ToastContainer } from 'react-toastify'
+import DocumentList from './components/DocumentList.jsx'
 import 'react-toastify/dist/ReactToastify.css';
 import { MyProfile } from './pages/MyProfile'
 import { AppliedJobs } from './pages/AppliedJobs'
@@ -85,7 +86,7 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/details/:id' element={<JobDetails />} />
 
-        <Route element={<ProtectedRoute isAllowed={['applicant', 'admin'].includes(localStorage.getItem('role'))} />}>
+        <Route element={<ProtectedRoute isAllowed={['candidate', 'admin', 'hr','employee'].includes(localStorage.getItem('role'))} />}>
           <Route path='/profile' element={<MyProfile />} />
           <Route path='/applied' element={<AppliedJobs />} />
           <Route path='/saved' element={<SavedJobs />} />
@@ -95,10 +96,11 @@ function App() {
           <Route path='/JobsLayout' element={<JobsLayout />} />
           <Route path='/Application/:id' element={<Application />} />
           <Route path='/Application/Details/:id' element={<ApplicationDetails />} />
+          <Route path='/documents' element={<DocumentList />} />
 
         </Route>
 
-        <Route element={<ProtectedRoute isAllowed={"admin" === localStorage.getItem('role')} />}>
+        <Route element={<ProtectedRoute isAllowed={["admin","hr"].includes(localStorage.getItem('role'))} />}>
           <Route path='/admin/dashboard' element={<Dashboard />} />
           <Route path='/admin/postJob' element={<CreateJob />} />
           <Route path='/admin/allJobs' element={<ViewAllJobAdmin />} />

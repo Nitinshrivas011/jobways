@@ -39,7 +39,7 @@ export const Navbar = () => {
             <div className='text-white z-20 fixed min-w-full bg-gray-950'>
               {!isMobile &&  <ul className='sm:flex  justify-center items-center gap-24 pt-4 pb-3 font-semibold text-xl'>
                     <Link to="/" className='flex fixed left-24 justify-center items-center titleT'>
-                        <MdOutlineBusinessCenter size={19} />  JOBLANE
+                        <MdOutlineBusinessCenter size={19} />  JOBWAYS
                     </Link>
 
                     <Link to="/" className='cool-link'>Home</Link>
@@ -56,6 +56,7 @@ export const Navbar = () => {
                             <Menu.Dropdown>
                                 <Link to="/profile"><Menu.Item icon={<FaUserCircle size={14} />}>My Profile</Menu.Item></Link>
                                 {me.role === "admin" && <Link to="/admin/dashboard"><Menu.Item icon={<MdOutlineDashboard size={14} />}>Dashboard</Menu.Item></Link>}
+                                {me.role === "hr" && <Link to="/admin/dashboard"><Menu.Item icon={<MdOutlineDashboard size={14} />}>Dashboard</Menu.Item></Link>}
                                 <Link to="/applied"><Menu.Item icon={<MdDoneAll size={14} />}>Applied Jobs</Menu.Item></Link>
                                 <Link to="/saved"><Menu.Item icon={<FaSave size={14} />}>Saved Jobs</Menu.Item></Link>
                                 <Menu.Divider />
@@ -85,6 +86,7 @@ export const Navbar = () => {
                                     <Menu.Dropdown>
                                         <Link to="/profile"><Menu.Item icon={<FaUserCircle size={14} />}>My Profile</Menu.Item></Link>
                                         {me.role === "admin" && <Link to="/admin/dashboard"><Menu.Item icon={<MdOutlineDashboard size={14} />}>Dashboard</Menu.Item></Link>}
+                                        {me.role === "hr" && <Link to="/admin/dashboard"><Menu.Item icon={<MdOutlineDashboard size={14} />}>Dashboard</Menu.Item></Link>}
                                         <Link to="/applied"><Menu.Item icon={<MdDoneAll size={14} />}>Applied Jobs</Menu.Item></Link>
                                         <Link to="/saved"><Menu.Item icon={<FaSave size={14} />}>Saved Jobs</Menu.Item></Link>
                                         <Menu.Divider />

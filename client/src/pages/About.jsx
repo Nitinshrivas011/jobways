@@ -10,13 +10,7 @@ export const About = () => {
     <div className="bg-gray-800 p-5 rounded-lg shadow-lg">
       <p className="text-4xl pb-3 font-bold text-center text-yellow-500">About Us</p>
       <p className="text-lg">
-        At JobLane, we're more than just a job application platform –
-        we're your partners in realizing your professional aspirations.
-        Our mission is to connect talented individuals with remarkable
-        opportunities that elevate their careers and enrich their lives.
-        Whether you're a recent graduate stepping into the workforce or a
-        seasoned professional seeking new horizons, JobLane is here to
-        guide you every step of the way.
+        At JobWays, we’re more than just a job application platform — we’re dedicated partners in helping you achieve your career goals. Our mission is to bridge the gap between talented professionals and outstanding opportunities that propel their growth and transform their futures. Whether you’re launching your career or looking to explore exciting new challenges, JobWays is committed to supporting and empowering you every step of the journey.
       </p>
     </div>
     <div className="bg-gray-800 p-5 rounded-lg shadow-lg">
@@ -42,15 +36,15 @@ export const About = () => {
       </ul>
     </div>
     <div className="bg-gray-800 p-5 rounded-lg shadow-lg">
-      <p className="text-2xl text-yellow-500">Join the JobLane Community</p>
+      <p className="text-2xl text-yellow-500">Join the JobWays Community</p>
       <p className="pt-3">
-        {" "}When you join JobLane, you're not just signing up for a platform –
+        {" "}When you join JobWays, you're not just signing up for a platform –
         you're becoming part of a dynamic community of professionals,
         recruiters, and mentors. Together, we're shaping the future of
         work, one opportunity at a time.
       </p>
       <p className="pt-4">
-        Thank you for choosing JobLane as your partner in career
+        Thank you for choosing JobWays as your partner in career
         advancement. Here's to unlocking a world of possibilities and
         achieving greatness together!
       </p>

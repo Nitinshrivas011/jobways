@@ -102,6 +102,7 @@ export const MyProfile = () => {
                           <Link to="/changePassword"><button className='blueCol w-2/3 md:w-full font-medium px-6 py-1'>Change Password</button></Link>
                         </li>
                         <li className=' '><Link to="/deleteAccount"><button className='blueCol w-2/3 md:w-full font-medium px-6 py-1'>Delete Account</button></Link></li>
+                        <li className=' '><Link to="/documents"><button className='blueCol w-2/3 md:w-full font-medium px-6 py-1'>Document</button></Link></li>
                       </ul>
 
                     </div>

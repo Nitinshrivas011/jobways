@@ -75,6 +75,7 @@ export const EditUserAdmin = () => {
                                             <option value="not" selected>Select Status</option>
                                             <option value="admin">Admin</option>
                                             <option value="applicant">Applicant</option>
+                                            <option value="hr">HR</option>
                                         </select>
                                     </div>
                                     <div className='flex gap-3 font-semibold  py-2 text-sm '>

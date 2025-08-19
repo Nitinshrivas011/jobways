@@ -2,7 +2,7 @@ const app = require('./app')
 const databaseConnection = require('./config/database')
 const cloudinary  = require('cloudinary')
 const dotenv = require('dotenv')
-dotenv.config({path:"./config/config.env"})
+require('dotenv').config({ path: './config/.env' });
 
 
 cloudinary.config({

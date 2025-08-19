@@ -51,17 +51,11 @@ exports.isAuthenticated = (req, res, next) => {
 }
 
 
-
-
-exports.authorizationRoles = (...roles) => {
+exports.authorizeRoles = (...allowedRoles)=> {
     return (req, res, next) => {
-        if (!roles.includes(req.user.role)) {
-            return res.status(403).json({
-                success: false,
-                message: `Role ${req.user.role} is not allowed to access this resource`
-            });
+        if (!allowedRoles.includes(req.user.role)) {
+            return res.status(403).json({ message: `Access denied for role ${req.user.role}` });
         }
-
         next();
     };
-};
+}

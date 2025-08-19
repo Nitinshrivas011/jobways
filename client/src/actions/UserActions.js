@@ -7,14 +7,18 @@ import {
 } from '../slices/UserSlice'
 import { toast } from 'react-toastify'
 import axios from 'axios'
+// const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:3000/api/v1/api/v1";
 
 
 
-export const registerUser = (userData) => async (dispatch) => {
+
+export const registerUser = (formData) => async (dispatch) => {
     try {
         dispatch(registerRequest())
 
-        const { data } = await axios.post("https://joblane-backend.onrender.com/api/v1/register", userData);
+        const { data } = await axios.post(`http://localhost:3000/api/v1/register`, formData, {heaaders :{
+            'Content-Type': 'multipart/form-data'
+        }});
 
         dispatch(registerSuccess())
         localStorage.setItem('userToken', data.token)
@@ -22,21 +26,21 @@ export const registerUser = (userData) => async (dispatch) => {
         toast.success("Registration successful !")
 
     } catch (err) {
-        dispatch(registerFail(err.response.data.message))
-        if (err.response.data.message.includes("duplicate")) {
+        dispatch(registerFail(err.response?.data?.message || "Registration error!"));
+        if (err.response?.data?.message?.includes("duplicate")) {
             toast.error("User already exists.")
         } else {
-            toast.error(err.response.data.message)
+            toast.error(err.response?.data?.message || "Registration error!")
         }
     }
-}
+};
 
 
 export const loginUser = (userData) => async (dispatch) => {
     try {
         dispatch(loginRequest())
 
-        const { data } = await axios.post("https://joblane-backend.onrender.com/api/v1/login", userData);
+        const { data } = await axios.post(`http://localhost:3000/api/v1/login`, userData);
 
         dispatch(loginSuccess())
         localStorage.setItem('userToken', data.token)
@@ -60,7 +64,7 @@ export const logOrNot = () => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.get("https://joblane-backend.onrender.com/api/v1/isLogin", config);
+        const { data } = await axios.get(`http://localhost:3000/api/v1/isLogin`, config);
 
         dispatch(isLoginSuccess(data.isLogin))
 
@@ -81,7 +85,7 @@ export const me = () => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.get("https://joblane-backend.onrender.com/api/v1/me", config);
+        const { data } = await axios.get(`http://localhost:3000/api/v1/me`, config);
         
         localStorage.setItem("role", data.user.role)
 
@@ -103,7 +107,7 @@ export const changePass = (userData) => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.put("https://joblane-backend.onrender.com/api/v1/changePassword", userData, config)
+        const { data } = await axios.put(`http://localhost:3000/api/v1/changePassword`, userData, config)
 
         dispatch(changePasswordSuccess())
         toast.success("Password Changed successfully !")
@@ -125,7 +129,7 @@ export const updateProfile = (userData) => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.put("https://joblane-backend.onrender.com/api/v1/updateProfile", userData, config)
+        const { data } = await axios.put("http://localhost:3000/api/v1/updateProfile", userData, config)
 
         dispatch(updateProfileSuccess())
         toast.success("Profile Updated successfully !")
@@ -151,7 +155,7 @@ export const deleteAccount = (userData) => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.put("https://joblane-backend.onrender.com/api/v1/deleteAccount", userData, config)
+        const { data } = await axios.put("http://localhost:3000/api/v1/deleteAccount", userData, config)
 
         console.log(data)
 
