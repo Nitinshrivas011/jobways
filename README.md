@@ -1,89 +1,87 @@
-<h1 align="center" id="title">JobLane</h1>
+# JobWays
 
-<p align="center"><img src="https://socialify.git.ci/sujaltangde/JobLane/image?forks=1&issues=1&language=1&name=1&owner=1&pulls=1&stargazers=1&theme=Dark" alt="JobLane" width="640" height="320" /></p>
+JobWays is a professional platform designed to help users connect with job opportunities, manage applications, and grow their careers.
 
-[![Hits](https://hits.sh/github.com/sujaltangde/JobLane.svg?color=116acc)](https://hits.sh/github.com/sujaltangde/JobLane/)
+---
 
-<p id="description">Full Stack Job application portal built using MERN stack, Focusing on simplifying the job applications.</p>
+## 🚀 Project Setup Guide (For Developers)
 
-<h2>🚀 Demo</h2>
+Follow these steps to set up the **JobWays** project locally.
 
-[Website](https://joblane.vercel.app/)<br />
+### 📦 Prerequisites
 
-  
-  
-<h2>🧐 Features</h2>
+- **Node.js** (v18 or later recommended)
+- **npm** (comes with Node.js)
+- **MongoDB** instance (local or cloud)
+- *(Optional)* Cloudinary account for document storage
 
-Here're some of the project's best features:
+---
 
-*   User Authentication and Authorization
-*   Job Search and Filtering
-*   Save and Track Jobs
-*   Resume Management
-*   Profile Management
-*   Admin Dashboard
-*   Job Posting
-*   Application Tracking
-*   Messaging and Notifications
-*   Responsive Design
+### 🔧 Installation Steps
 
-<h2>🔥 Getting Started</h2>
+#### 1. Clone the repository
+```bash
+git clone https://github.com/your-username/jobways.git
+cd jobways
+```
 
-To get started with the assignment project, follow these steps:
+#### 2. Install dependencies
+```bash
+npm install
+```
 
-### Prerequisites
+#### 3. Configure environment variables
+Create a `.env` file in the root directory and add the following variables:
 
-- **Node.js**: Make sure you have Node.js installed on your computer. You can download it from [nodejs.org](https://nodejs.org).
+```env
+PORT=3000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret_key
+CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+EMAIL_SERVICE_PROVIDER=smtp_provider
+EMAIL_USERNAME=your_email@example.com
+EMAIL_PASSWORD=your_email_password
+```
 
-### Installation
+#### 4. Seed database (optional)
+To add initial users or data:
+```bash
+npm run seed
+```
 
-1. Clone the repository to your local machine:
-    ```bash
-    git clone https://github.com/sujaltangde/JobLane.git 
-    ```
+#### 5. Run the project
+```bash
+npm start
+```
+Your backend server should now be running on: [http://localhost:3000](http://localhost:3000)
 
-2. Change into the frontend directory:
-    ```bash
-    cd client
-    ```
+#### 6. Frontend setup
+- Navigate to the `client` folder (if applicable)
+- Install frontend dependencies
+- Run the frontend server (see frontend README for details)
 
-3. Install the frontend dependencies:
-    ```bash
-    npm install
-    ```
+---
 
-4. Run the development server:
-    ```bash
-    npm run dev
-    ```
+## 🌱 Database Seeding
 
-5. Return to the main directory and change into the backend directory:
-    ```bash
-    cd ..
-    cd server
-    ```
+To populate the database with initial user data (e.g., admin and default users), you can run the seeder script included in this project.
 
-6. Install the backend dependencies:
-    ```bash
-    npm install
-    ```
+### How to Run Seeder
 
-7. Run the development server:
-    ```bash
-    nodemon server.js
-    ```
+1. Make sure your MongoDB server is running and your `.env` file has the correct `MONGO_URI` configured.
+2. Run the seeder script using the following command:
+```bash
+npm run seed
+```
 
+---
 
+## 🤝 Support
 
-<h2>🍰 Contribution Guidelines:</h2>
+For assistance, feedback, or inquiries, please contact us at: [support@jobways.com](mailto:support@jobways.com)
 
-Any contributor who wishes to contribute to this project should first read the README thoroughly. Study how the project is built and done, familiarize yourself with its structure and components. Take note of any bugs present in the project. If you find any raise an issue on the project's repository. Wait until a mentor assigns the issue to you. Once assigned start working on the development of the fix or improvement. After completing the development raise a pull request (PR) for the changes to be reviewed and merged into the project.
+---
 
-  
-  
-<h2>💻 Built with</h2>
-
-- **Frontend**: React.js, Redux
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB 
-- **Styling**: Tailwind CSS, Material UI, Mantine UI
+✨ Join **JobWays** today and take the next step toward your professional aspirations!
